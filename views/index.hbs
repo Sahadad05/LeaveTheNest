@@ -1,0 +1,95 @@
+<h1>Deja el nido</h1>
+<div>
+  <nav>
+<a href="/login">Inicia Sesión</a> |
+<a href="/signup">Regístrate</a> |
+<button id="button">Regístrate con Facebook</button>
+
+{{!-- Facebook FireBase --}}
+
+<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+
+<script>
+    
+  var config = {
+    apiKey: "AIzaSyCsMwlpOj-ytyb8X94LLYumFcU6ftnKXGU",
+    authDomain: "leavethenest-9aa84.firebaseapp.com",
+    databaseURL: "https://leavethenest-9aa84.firebaseio.com",
+    projectId: "leavethenest-9aa84",
+    storageBucket: "leavethenest-9aa84.appspot.com",
+    messagingSenderId: "855018807904"
+  };
+  firebase.initializeApp(config);
+  var provider  = new firebase.auth.FacebookAuthProvider();
+
+  document.getElementById("button").addEventListener("click", () => {
+    firebase.auth().signInWithPopup(provider)
+    .then(function(result) {
+      var token      = result.credential.accessToken;
+      var user       = result.user;
+      console.log(user)
+     const createUser = (body) =>{
+       return fetch('http://localhost:3000/signupfb', {
+         method: 'POST',
+         headers: {
+           "Content-Type": "application/json"
+         },
+         body: JSON.stringify(body)
+       })
+     }
+     createUser({
+       username: user.displayName, 
+       email:    user.email, 
+       photoURL:    user.photoURL})
+       .then(result=>{
+         console.log(result)
+window.location.href = '/profile'
+       })
+      .catch(error=> console.log(error))
+    })
+    .catch(function(error) {
+      var errorCode  = error.code;
+      var errorMessage = error.message;
+      var email      = error.email;
+      var credential = error.credential;
+});
+});
+ 
+</script>
+
+
+
+
+{{!-- Boton --}}
+{{!-- 
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+  var js, fjs= d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js     = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=2280212498860623&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script> 
+
+<div 
+class                 ="fb-login-button" 
+data-max-rows         ="1" 
+data-size             ="medium" 
+data-button-type      ="login_with" 
+data-show-faces       ="false" 
+data-auto-logout-link ="false" 
+data-use-continue-as  ="true">
+</div> --}}
+
+
+</nav>
+<br>
+<div>
+<img src="http://i.imgur.com/BNeY7NP.jpg" alt="">
+</div>
+
+
+
+

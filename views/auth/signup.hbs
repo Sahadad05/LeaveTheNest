@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+
+<form action="{{url}}/{{id}}" method="post">
+  <p>
+    <label for="username">Usuario</label>
+    <input type="text" name="username" id="username" value="{{username}}">
+  </p>
+
+  <p>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" value="{{email}}">
+  </p>
+
+  {{#if password}}
+  <p>
+    <label for="password">Contraseña</label>
+    <input type="password" name="password" id="password">
+  </p>
+  {{/if}}
+
+  <input type="submit" value="{{btnValue}}">
+</form>
