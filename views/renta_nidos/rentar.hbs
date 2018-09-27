@@ -1,7 +1,7 @@
 <h1>Renta tu nido</h1>
 {{!-- Opciones --}}
 
-<form action="/rentar" method="post" enctype="multipart/form-data">
+<form action="/rentar_nidos/rentar" method="post" enctype="multipart/form-data">
 
 <p>
 <label for="choose">¿Qué tipo de nido rentas?</label>
@@ -119,7 +119,7 @@ function map(){
 
   const autoCompleteMapita = (input, inputLat, inputLng) => {
     let dropdown = new google.maps.places.Autocomplete(input)
-    
+
     dropdown.addListener('place_changed', () => {
       let place = dropdown.getPlace()
       lat.value = place.geometry.location.lat()
