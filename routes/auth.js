@@ -104,14 +104,14 @@ router.post('/buscar', (req, res, next) => {
   res.redirect('/buscar')
 })
 
-router.get('/rentar', (req, res) => {
+router.get('/renta_nidos/rentar', (req, res) => {
   if (req.user) req.logOut()
-  res.render('rentar')
+  res.render('renta_nidos/rentar')
 })
 
-router.post('/rentar', (req, res, next) => {
+router.post('/renta_nidos/rentar', (req, res, next) => {
   req.app.locals.loggedUser = req.user;
-  res.redirect('/rentar')
+  res.redirect('renta_nidos/rentar')
 })
 
 module.exports = router
