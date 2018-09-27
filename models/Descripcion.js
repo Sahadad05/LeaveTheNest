@@ -1,5 +1,4 @@
 const Schema = require('mongoose').Schema
-
 const descripcionSchema = new Schema({
   body: String
 }, {

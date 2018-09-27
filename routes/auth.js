@@ -76,7 +76,8 @@ router.get('/edit/:id', isLogged, (req, res) => {
     password: false,
     id:  req.app.locals.loggedUser._id,
     photoURL: req.app.locals.loggedUser.photoURL,
-    descripcion: req.app.locals.loggedUser.descripcion
+    descripcion: req.app.locals.loggedUser.descripcion,
+    edad: req.app.locals.loggedUser.edad
   }
   res.render('edit', configuration)
 })

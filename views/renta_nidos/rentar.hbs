@@ -119,6 +119,7 @@ function map(){
 
   const autoCompleteMapita = (input, inputLat, inputLng) => {
     let dropdown = new google.maps.places.Autocomplete(input)
+    
     dropdown.addListener('place_changed', () => {
       let place = dropdown.getPlace()
       lat.value = place.geometry.location.lat()

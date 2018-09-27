@@ -10,3 +10,25 @@ a {
   width: 80%;
   height: 50vh;
 }
+
+header{
+  box-sizing: border-box;
+  padding: 0 2%;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(236, 99, 8);
+  color: rgb(111, 6, 138);
+ }
+ 
+ header nav a{
+  color: #fff;
+  text-decoration: none;
+ }
+ header nav a:hover{
+  color: #000;
+  background-color: #fff;
+  text-decoration: none;
+ }
