@@ -1,11 +1,7 @@
 const Schema = require('mongoose').Schema
 
 const descripcionSchema = new Schema({
-  body: String,
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  body: String
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -49,13 +49,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
-app.locals.title = 'Repaso';
+app.locals.title = 'proyecto';
 
 const auth   = require('./routes/auth');
 const index  = require('./routes/index');
-const descripcion = require('./routes/descripcion'); 
+//const descripcion = require('./routes/descripcion'); 
 app.use('/', index);
 app.use('/', auth);
-app.use('/', descripcion);
+//app.use('/', descripcion);
 
 module.exports = app;

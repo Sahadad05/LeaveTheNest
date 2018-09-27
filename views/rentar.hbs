@@ -1,0 +1,136 @@
+<h1>Renta tu nido</h1>
+{{!-- Opciones --}}
+
+<form action="/rentar" method="post" enctype="multipart/form-data">
+
+<p>
+<label for="choose">¿Qué tipo de nido rentas?</label>
+<select name="choose">
+  <option selected value="0"> Elige una opción </option>
+   <option value  ="1">Casa</option> 
+   <option value  ="2">Departamento</option> 
+   <option value  ="3">Cuarto</option>
+</select>  
+</p>
+
+<p>
+ ¿Por dónde? (calle, colonia):
+ <input type="text" name="location[address]" id="address">
+</p>
+
+<p>
+ Latitude:
+ <input type="text" name="location[coordinates][1]" id="lat">
+</p>
+
+<p>
+ Longitude:
+ <input type="text" name="location[coordinates][0]" id="lng">
+</p>
+
+<p>
+<select name="" size=3>
+   <option selected value="0">¿Amueblado? </option>
+       <option value="1">Sí</option> 
+       <option value="2">No</option>  
+</select>
+</p>
+
+<p>
+<label for="choose">Baño</label>
+<select name="choose">
+   <option selected value="0"> Elige una opción </option>
+   <option value  ="1">Solo</option> 
+   <option value  ="2">Compartido</option> 
+</select>  
+</p>
+
+<p>
+  <label for="n1">¿Con cuántos roomies?</label>
+  <input 
+  type    ="number" 
+  min     ="0" 
+  max     ="120" 
+  step    ="1" 
+  id      ="n1" 
+  name    ="roomies"
+  pattern ="\d+">
+</p>
+
+<p>
+<label for="choose">Estacionamiento</label>
+<select name="choose">
+   <option selected value="0"> Elige una opción </option>
+   <option value  ="1">Si</option> 
+   <option value  ="2">No</option> 
+</select>  
+</p>
+
+<p>
+<label for="choose">Pet friendly</label>
+<select name="choose">
+   <option selected value="0"> Elige una opción </option>
+   <option value  ="1">Si</option> 
+   <option value  ="2">No</option> 
+</select>  
+</p>
+
+
+<br>
+  <input type="submit" value="Rentar">
+
+
+</form>
+
+{{!-- MAPA --}}
+
+<h2>Vecindario</h2>
+
+<div id="map"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8o46KiOg4PdiJ8WCRXC9KyFfE4d-g0Qw&libraries=places"></script>
+
+<script>
+function map(){
+   const ironhackHQ = {
+   lat:  19.3977857,
+   lng:  -99.1757621}
+   const map = new google.maps.Map((
+     document.getElementById('map')
+     ),
+     {
+       zoom: 15,
+       center: ironhackHQ
+   })
+   const myMarker = new google.maps.Marker({
+     map: map,
+     position:{
+       lat:  19.3977857,
+       lng:  -99.1757621
+     },
+     title: "I'm here",
+     animation:google.maps.Animation.BOUNCE
+   })
+ }
+
+ map()
+
+
+  let address = document.getElementById('address')
+  let lat = document.getElementById('lat')
+  let lng = document.getElementById('lng')
+
+  const autoCompletePutita = (input, inputLat, inputLng) => {
+    let dropdown = new google.maps.places.Autocomplete(input)
+
+    dropdown.addListener('place_changed', () => {
+      let place = dropdown.getPlace()
+      lat.value = place.geometry.location.lat()
+      lng.value = place.geometry.location.lng()
+    })
+  }
+  autoCompletePutita(address, lat, lng)
+
+</script>
+
+

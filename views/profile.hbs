@@ -1,3 +1,15 @@
+<button>
+  <a href='/'></a>Salir de sesión</a>
+</button> |
+
+<button>
+  <a href='/buscar'></a>Encontrar nido</a>
+</button>
+
+<button>
+  <a href='/rentar'></a>Rentar nido</a>
+</button>
+
 <h2>¡Hola {{username}}!</h2>
 <img src="{{photoURL}}" alt="profile_picture" id="photo">
 <br>
@@ -6,31 +18,14 @@
 <button>
   <a href="/edit/{{_id}}">Editar perfil</a>
 </button>
-
-<button>
-  <a href="/create_new">Agregar descripción</a>
-</button>
-
-<button>
-  <a href='/'>Salir de sesión</a>
-</button>
 </div>
 
 <hr>
 
 <div>
   <h2>Descripción</h2>
-  <div>
-    {{#each descripciones}}
-      <p>{{body}}</p>
-    {{/each}}
-  </div>
+  <p>{{descripcion}}</p>
+  <button>
+  <a href="/edit/{{_id}}">Agregar descripción</a>
+  </button>
 </div>
-
-{{!-- <script>
-
-  document.getElementById('photo').addEventListener('click', () => {
-    window.location.href = "/edit_image"
-  })
-
-</script> --}}

@@ -1,27 +1,28 @@
-<h2>Edita tu perfil</h2>
+<h1>Edita tu perfil</h1>
 
-<form action="/edit" method="post" enctype="multipart/form-data">
-  <label for=""></label>
-  <input type="text" name="username" id="username">
-  <h2>Agrega tu imagen</h2>
+<form action="/edit/{{id}}" method="post" enctype="multipart/form-data">
+  <label for="">Usuario</label>
+  <input type="text" name="username" id="username" value="{{username}}">
+
+  <p>Edita tu imagen</p>
   <input type="file" name="photoURL" id="">
-  <br>
-  <input type="submit" value="Sube tu foto">
+  
+
+
+<p>Edita Descripción</p>
+
+  <p>
+    <label for="descripcion"></label>
+    <textarea 
+    name  ="descripcion" 
+    id    ="descripcion" 
+    cols  ="60" 
+    rows  ="10">
+    {{descripcion}}
+    </textarea>
+  </p>
+
+<br>
+  <input type="submit" value="Actualizar">
+
 </form>
-
-{{!-- <h2>Agrega tu imagen</h2>
-
-<form action="/edit_image" method="post" enctype="multipart/form-data">
-  <input type="file" name="photoURL" id="">
-  <br>
-  <input type="submit" value="Sube tu foto">
-</form> --}}
-
-
-<script>
-
-  document.getElementById('photo').addEventListener('click', () => {
-    window.location.href = "/edit_image"
-  })
-
-</script>

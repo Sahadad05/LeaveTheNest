@@ -6,10 +6,7 @@ const userSchema = new Schema({
   username: String,
   email: String,
   photoURL: String,
-  // descripciones: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Descripcion'
-  // }],
+  descripcion: String,
   active: {
     type: Boolean,
     default: false
@@ -19,7 +16,7 @@ const userSchema = new Schema({
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   }, 
-  versionKey: false //Opcional
+  versionKey: false
 })
 
 module.exports = mongoose.model('User', userSchema.plugin(PLM, {usernameField: 'email'}))

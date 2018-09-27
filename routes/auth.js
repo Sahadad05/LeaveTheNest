@@ -3,6 +3,7 @@ const User        = require('../models/User')
 const passport    = require('../helpers/passport')
 const uploadCloud = require('../helpers/cloudinary')
 const sendMail    = require('../helpers/mailer')
+const Descripcion = require('../models/Descripcion')
 
 
 const isLogged = (req, res, next) => {
@@ -57,10 +58,10 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 })
 
 router.get('/profile', isLogged, (req, res) => {
-  User.findById(req.app.locals.loggedUser._id).populate('descripciones')
+  User.findById(req.app.locals.loggedUser._id)
   .then(usuario => {
     console.log(usuario)
-    res.render('profile', usuario) //Lo que le tengo que pasar aquí es un objeto
+    res.render('profile', req.app.locals.loggedUser) 
   })
   .catch(error => console.log(error))
 })
@@ -74,14 +75,17 @@ router.get('/edit/:id', isLogged, (req, res) => {
     //email: req.app.locals.loggedUser.email,
     password: false,
     id:  req.app.locals.loggedUser._id,
-    photoURL: req.app.locals.loggedUser.photoURL
+    photoURL: req.app.locals.loggedUser.photoURL,
+    descripcion: req.app.locals.loggedUser.descripcion
   }
-  res.render('auth/signup', configuration)
+  res.render('edit', configuration)
 })
 
-router.post('/edit/:id', (req, res, next) => {
+router.post('/edit/:id', isLogged, uploadCloud.single('photoURL'),(req, res, next) => {
   let {id} = req.params
-  User.findByIdAndUpdate(id, req.body, {new: true})
+  let photito = req.app.locals.loggedUser.photoURL
+  if(req.file) photito = req.file.url 
+  User.findByIdAndUpdate(id, { ...req.body, photoURL: photito }, {new: true})
   .then(user => {
     req.app.locals.loggedUser = user
     res.redirect('/profile')
@@ -89,39 +93,24 @@ router.post('/edit/:id', (req, res, next) => {
   .catch(e => next(e))
 })
 
-router.get('/edit_image', isLogged, (req, res) => {
-  res.render('edit_image')
+router.get('/buscar', (req, res) => {
+  if (req.user) req.logOut()
+  res.render('buscar')
 })
 
-router.post('/edit_image', isLogged, uploadCloud.single('photoURL'), (req, res, next) => {
-  User.findByIdAndUpdate(req.app.locals.loggedUser._id, { photoURL: req.file.url }, { new: true })
-  .then(user => {
-    req.app.locals.loggedUser = user
-    console.log(user)
-    res.redirect('/profile')
-  })
-  .catch(e => next(e))
+router.post('/buscar', (req, res, next) => {
+  req.app.locals.loggedUser = req.user;
+  res.redirect('/buscar')
 })
 
-//Facebook
-// router.get('/facebook', passport.authenticate("facebook"))
+router.get('/rentar', (req, res) => {
+  if (req.user) req.logOut()
+  res.render('rentar')
+})
 
-// router.get('/facebook/callback',passport.authenticate("facebook"), (req,res,next)=>{
-//   if(req.user.active ===  false) return res.redirect('/complete_profile')
-//   return res.redirect('/profile')
-// })
-
-// router.post('/complete_profile', (req, res, next) => {
-//   User.findOneAndUpdate({username: req.user.username}, {...req.body,  active: true})
-// }) 
-
-// router.post('/facebook', (req,res,next)=>{
-// User.registrer(req.body, req.body.password)
-//   .then(user => {
-//     res.redirect('/profile')
-//   })
-//   .catch(e => console.log(e))
-// })
-
+router.post('/rentar', (req, res, next) => {
+  req.app.locals.loggedUser = req.user;
+  res.redirect('/rentar')
+})
 
 module.exports = router
