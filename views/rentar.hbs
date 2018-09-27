@@ -18,32 +18,10 @@
  <input type="text" name="location[address]" id="address">
 </p>
 
-<p>
- Latitude:
- <input type="text" name="location[coordinates][1]" id="lat">
-</p>
+ <input type="text" name="location[coordinates][1]" id="lat" hidden="true">
 
-<p>
- Longitude:
- <input type="text" name="location[coordinates][0]" id="lng">
-</p>
+ <input type="text" name="location[coordinates][0]" id="lng" hidden="true">
 
-<p>
-<select name="" size=3>
-   <option selected value="0">¿Amueblado? </option>
-       <option value="1">Sí</option> 
-       <option value="2">No</option>  
-</select>
-</p>
-
-<p>
-<label for="choose">Baño</label>
-<select name="choose">
-   <option selected value="0"> Elige una opción </option>
-   <option value  ="1">Solo</option> 
-   <option value  ="2">Compartido</option> 
-</select>  
-</p>
 
 <p>
   <label for="n1">¿Con cuántos roomies?</label>
@@ -55,6 +33,25 @@
   id      ="n1" 
   name    ="roomies"
   pattern ="\d+">
+</p>
+
+<p>
+<label for="choose">Baño</label>
+<select name="choose">
+   <option selected value="0"> Elige una opción </option>
+   <option value  ="1">Solo</option> 
+   <option value  ="2">Compartido</option> 
+</select>  
+</p>
+
+
+<p>
+<label for="choose">¿Amueblado? </label>
+<select name="choose">
+    <option selected value="0"> Elige una opción </option>
+    <option value="1">Sí</option> 
+    <option value="2">No</option>  
+</select>
 </p>
 
 <p>
@@ -94,7 +91,7 @@
 function map(){
    const ironhackHQ = {
    lat:  19.3977857,
-   lng:  -99.1757621}
+   lng:  -99.1713954}
    const map = new google.maps.Map((
      document.getElementById('map')
      ),
@@ -106,7 +103,7 @@ function map(){
      map: map,
      position:{
        lat:  19.3977857,
-       lng:  -99.1757621
+       lng:  -99.1713954
      },
      title: "I'm here",
      animation:google.maps.Animation.BOUNCE
@@ -120,16 +117,15 @@ function map(){
   let lat = document.getElementById('lat')
   let lng = document.getElementById('lng')
 
-  const autoCompletePutita = (input, inputLat, inputLng) => {
+  const autoCompleteMapita = (input, inputLat, inputLng) => {
     let dropdown = new google.maps.places.Autocomplete(input)
-
     dropdown.addListener('place_changed', () => {
       let place = dropdown.getPlace()
       lat.value = place.geometry.location.lat()
       lng.value = place.geometry.location.lng()
     })
   }
-  autoCompletePutita(address, lat, lng)
+  autoCompleteMapita(address, lat, lng)
 
 </script>
 

@@ -1,23 +1,21 @@
-<button>
-  <a href='/'></a>Salir de sesión</a>
-</button> |
+<div>
+  <a href='/'><button>Salir de sesión</button></a>
+|
 
-<button>
-  <a href='/buscar'></a>Encontrar nido</a>
-</button>
 
-<button>
-  <a href='/rentar'></a>Rentar nido</a>
-</button>
+  <a href='/buscar'><button>Encontrar nido</button></a>
+
+  <a href='/rentar'><button>Rentar nido</button></a>
+
+</div>
 
 <h2>¡Hola {{username}}!</h2>
 <img src="{{photoURL}}" alt="profile_picture" id="photo">
 <br>
 
 <div>
-<button>
-  <a href="/edit/{{_id}}">Editar perfil</a>
-</button>
+  <a href="/edit/{{_id}}"><button>Editar perfil</button></a>
+
 </div>
 
 <hr>
@@ -25,7 +23,5 @@
 <div>
   <h2>Descripción</h2>
   <p>{{descripcion}}</p>
-  <button>
-  <a href="/edit/{{_id}}">Agregar descripción</a>
-  </button>
+  {{!-- <a href="/edit/{{_id}}">  <button>Agregar descripción  </button></a> --}}
 </div>
