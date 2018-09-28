@@ -12,8 +12,9 @@ a {
 
 #map {
   width: 60%;
-  height: 100vh;
-  margin-top: 10px; }
+  height: 85vh;
+  margin-top: 20px;
+  border-radius: 35px; }
 
 #front {
   display: block;
@@ -134,7 +135,7 @@ p {
 
 .contenedor6 {
   padding: 10px;
-  margin-right: 80px;
+  margin-right: 130px;
   margin-top: 15px;
   background-color: rgba(248, 251, 252, 0.726);
   width: 200px;
@@ -145,8 +146,15 @@ p {
 
 * button {
   border-radius: 12px;
-  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  color: blueviolet;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 7px 5px 0 rgba(0, 0, 0, 0.19);
+  color: #bb33dd;
+  display: inline-block;
+  font-size: 15px; }
+
+.button {
+  border-radius: 12px;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 7px 5px 0 rgba(0, 0, 0, 0.19);
+  color: #bb33dd;
   display: inline-block;
   font-size: 15px; }
 

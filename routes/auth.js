@@ -16,7 +16,7 @@ const isLogged = (req, res, next) => {
 
 router.get('/signup', (req, res) => {
   configuration = {
-    title: 'Sign Up',
+    title: 'Regístra tu perfil',
     btnValue: 'Crear cuenta',
     url: '/signup',
     password: true,
@@ -65,6 +65,7 @@ router.get('/',(req,res)=>{
   res.redirect('/')
 })
 
+
 router.get('/profile', isLogged, (req, res) => {
   User.findById(req.app.locals.loggedUser._id)
   .then(usuario => {
@@ -106,7 +107,7 @@ router.post('/edit/:id', isLogged, uploadCloud.single('photoURL'),(req, res, nex
 router.get('/buscar', (req, res) => {
   Nidos.find()
   .then(nidos=>{
-    console.log(nidops)
+    console.log(nidos)
     res.render('buscar', {nidos})  
   })
 })
