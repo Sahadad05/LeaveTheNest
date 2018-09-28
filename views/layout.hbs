@@ -8,16 +8,18 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-<header>
-   <nav>
+
+  <header>
+   <nav id="title">
+     <img width="45px"src="/images/pajaro.png" alt="">
      <a href="/posts">Leave the nest</a>
    </nav>
-   
+
    <nav>
-     {{#if user}}
-     <a href="/profile/{{user.username}}">{{user.username}}</a>
+     {{#if loggedUser}}
+     <a href="/profile/{{loggedUser.username}}">{{loggedUser.username}}</a>
      |
-     <a href="/logout">Salir</a>
+     <a href="/">Salir</a>
      {{else}}
      <a href="/login">Inicia Sesión</a>
      |
@@ -26,8 +28,8 @@
      <button id="button">Regístrate con Facebook</button>
      {{/if}}
    </nav>
-   
- </header>
+
+</header>
 
 
   {{{body}}}

@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  margin: 10 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -10,14 +10,15 @@ a {
   height: 50vh; }
 
 header {
+  margin-left: -10px;
   box-sizing: border-box;
   padding: 0 2%;
   width: 100%;
-  height: 64px;
+  height: 72px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ec6308;
+  background-color: #f8914c;
   color: #6f068a; }
 
 header nav a {
@@ -28,5 +29,9 @@ header nav a:hover {
   color: #000;
   background-color: #fff;
   text-decoration: none; }
+
+#title {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 200%; }
 
 /*# sourceMappingURL=style.css.map */

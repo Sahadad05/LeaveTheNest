@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 exports.welcomeMail=(username, email)=>{
   
   transporter.sendMail({
-    from:'Tu roomie',
+    from:'"Leave the Nest" <contacto.leavethenest@gmail.com>',
     to:email,
     subject:'¡Bienvenido!',
     html:`

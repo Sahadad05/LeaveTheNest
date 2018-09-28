@@ -5,13 +5,13 @@ action="/buscar" method="post" enctype="multipart/form-data">
 
 
 <p>
-<label for="choose">¿Qué tipo de nido buscas?</label>
-<select name="choose">
-  <option selected value="0"> Elige una opción </option>
-   <option value  ="1">Casa</option> 
-   <option value  ="2">Departamento</option> 
-   <option value  ="3">Cuarto</option>
-</select>  
+ ¿Qué tipo de nido buscas?
+ <select name="enum" id="tipo_nido">
+<option selected value="0"> Elige una opción </option>
+ <option value="CASA">Casa</option>
+ <option value="DEPA">Departamento</option>
+ <option value="DEPA">Cuarto</option>
+</select>
 </p>
 
 <p>
@@ -23,6 +23,10 @@ action="/buscar" method="post" enctype="multipart/form-data">
 
  <input type="text" name="location[coordinates][0]" id="lng" hidden="true">
 
+<p> 
+  ¿Qué precio mensual?
+   <input type="Number" name="precio" id="precio">
+</p>
 
 <p>
   <label for="n1">¿Con cuántos roomies?</label>
@@ -36,52 +40,62 @@ action="/buscar" method="post" enctype="multipart/form-data">
   pattern ="\d+">
 </p>
 
-<p>
-<label for="choose">Baño</label>
-<select name="choose">
-   <option selected value="0"> Elige una opción </option>
-   <option value  ="1">Solo</option> 
-   <option value  ="2">Compartido</option> 
-   <option value  ="3">Indiferente</option> 
 
-</select>  
+<p>
+<label for="genero">¿Algún género en especial?</label>
+ <select name="enum" id="genero">
+<option selected value="0"> Elige una opción </option>
+ <option value="Femenino">Femenino</option>
+ <option value="Masculino">Masculino</option>
+ <option value="Indiferente">Indiferente</option>
+</select>
 </p>
 
 
 <p>
-<label for="choose">¿Amueblado? </label>
-<select name="choose">
-    <option selected value="0"> Elige una opción </option>
-    <option value="1">Sí</option> 
-    <option value="2">No</option>  
+<label for       ="baño">Baño</label>
+ <select name="enum" id="baño">
+<option selected value="0"> Elige una opción </option>
+ <option value   ="Solo">Solo</option>
+ <option value   ="Compartido">Compartido</option>
+<option value   ="Indiferente">Indiferente</option>
+</select>
+</p>
+
+
+<p>
+<label for      ="baño">¿Amueblado?</label>
+ <select name="enum" id="amueblado">
+<option selected value="0"> Elige una opción </option>
+ <option value  ="Si">Si</option>
+ <option value  ="No">No</option>
 </select>
 </p>
 
 <p>
-<label for="choose">Estacionamiento</label>
-<select name="choose">
-   <option selected value="0"> Elige una opción </option>
-   <option value  ="1">Si</option> 
-   <option value  ="2">No</option>
-   <option value  ="3">Indiferente</option> 
- 
-</select>  
+<label for="baño">Estacionamiento</label>
+ <select name="enum" id="estacionamiento">
+<option selected value="0"> Elige una opción </option>
+ <option value="Si">Si</option>
+ <option value="No">No</option>
+ <option value   ="Indiferente">Indiferente</option>
+</select>
 </p>
 
-<p>
-<label for="choose">Pet friendly</label>
-<select name="choose">
-   <option selected value="0"> Elige una opción </option>
-   <option value  ="1">Si</option> 
-   <option value  ="2">No</option>
-   <option value  ="3">Indiferente</option> 
 
-</select>  
+<p>
+<label for="baño">PetFriendly</label>
+ <select name="enum" id="petFriendly">
+<option selected value="0"> Elige una opción </option>
+ <option value="Si">Si</option>
+ <option value="No">No</option>
+ <option value   ="Indiferente">Indiferente</option>
+</select>
 </p>
 
 
 <br>
-  <input type="submit" value="Rentar">
+  <input type="submit" value="Buscar">
 
 
 </form>

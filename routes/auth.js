@@ -4,6 +4,8 @@ const passport    = require('../helpers/passport')
 const uploadCloud = require('../helpers/cloudinary')
 const sendMail    = require('../helpers/mailer')
 const Descripcion = require('../models/Descripcion')
+const Nidos       = require('../models/Nidos')
+
 
 
 const isLogged = (req, res, next) => {
@@ -77,7 +79,8 @@ router.get('/edit/:id', isLogged, (req, res) => {
     id:  req.app.locals.loggedUser._id,
     photoURL: req.app.locals.loggedUser.photoURL,
     descripcion: req.app.locals.loggedUser.descripcion,
-    edad: req.app.locals.loggedUser.edad
+    edad: req.app.locals.loggedUser.edad,
+    genero: req.app.locals.loggedUser.genero
   }
   res.render('edit', configuration)
 })
@@ -104,14 +107,39 @@ router.post('/buscar', (req, res, next) => {
   res.redirect('/buscar')
 })
 
-router.get('/renta_nidos/rentar', (req, res) => {
-  if (req.user) req.logOut()
-  res.render('renta_nidos/rentar')
+
+//LISTA DE NIDOS
+
+router.get('/', (req, res, next)=>{
+  Nidos.find()
+  .then(nidos=>{
+    console.log(nidos)
+    res.render('/nidos',{nidos})
+  })
+  .catch(e=>console.log(e))
+ })
+
+router.get('/rentar', (req, res) => {
+  res.render('rentar')
 })
 
-router.post('/renta_nidos/rentar', (req, res, next) => {
-  req.app.locals.loggedUser = req.user;
-  res.redirect('renta_nidos/rentar')
+router.post('/rentar',(req, res, next) => {
+  console.log(req.body)
+  Nidos.create(req.body)
+  .then(nidos=>{
+    console.log(nidos)
+    res.redirect('/nidos')
+  })
+  .catch(e=>console.log(e))
+ })
+
+ router.get('/nidos', (req, res)=>{
+  Nidos.find()
+    .then(nidos=>{
+      res.render('nidos', {nidos})
+    }).catch(e=>{
+      console.log(e)
+    })
 })
 
 module.exports = router

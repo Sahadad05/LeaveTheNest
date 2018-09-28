@@ -33,9 +33,10 @@
        })
      }
      createUser({
-       username: user.displayName, 
-       email:    user.email, 
-       photoURL:    user.photoURL})
+       username   :user.displayName, 
+       email      :user.email, 
+       photoURL   :user.photoURL
+       genero     :user.genero})
        .then(result=>{
          console.log(result)
 window.location.href = '/profile'
