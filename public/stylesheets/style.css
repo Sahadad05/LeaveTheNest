@@ -12,7 +12,14 @@ a {
 
 #map {
   width: 60%;
-  height: 100vh; }
+  height: 100vh;
+  margin-top: 10px; }
+
+#front {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; }
 
 header {
   box-sizing: border-box;
@@ -61,6 +68,18 @@ section {
   border-radius: 15px;
   background-color: rgba(49, 205, 233, 0.516);
   width: 350px;
-  height: 500px; }
+  height: 550px; }
+
+.estampa {
+  border-radius: 35px;
+  background-color: rgba(0, 0, 0, 0.112);
+  border-color: black;
+  border-width: 3px;
+  border-style: inset;
+  justify-content: space-between; }
+
+p {
+  font-size: 130%;
+  margin: 3px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,10 +1,12 @@
+<section>
+<form action="/buscar" method="post">
 <h1>Busca tu nido</h1>
 
-<form action="/buscar" method="post">
-
 {{!-- Opciones --}}
+<div class="contenedor2">
 <p>
  ¿Qué tipo de nido buscas?
+ <br>
  <select name="enum" id="tipo_nido">
 <option selected value="0"> Elige una opción </option>
  <option value="CASA">Casa</option>
@@ -15,7 +17,8 @@
 
 <p>
  ¿Por dónde? (calle, colonia):
- <input type="text" name="location[address]" id="address">
+ <br>
+ <input size="40" type="text" name="location[address]" id="address">
 </p>
 
  <input type="text" name="location[coordinates][1]" id="lat" hidden="true">
@@ -23,12 +26,14 @@
  <input type="text" name="location[coordinates][0]" id="lng" hidden="true">
 
 <p> 
-  ¿Qué precio mensual?
+  ¿Qué precio máximo mensual?
+  <br>
    <input type="Number" name="precio" id="precio">
 </p>
 
 <p>
   <label for="n1">¿Con cuántos roomies?</label>
+  <br>
   <input 
   type    ="number" 
   min     ="0" 
@@ -42,6 +47,7 @@
 
 <p>
 <label for      ="genero">¿Algún género en especial?</label>
+<br>
  <select name   ="enum" id="genero">
 <option selected value="0"> Elige una opción </option>
  <option value  ="Femenino">Femenino</option>
@@ -53,6 +59,7 @@
 
 <p>
 <label for       ="baño">Baño</label>
+<br>
  <select name    ="enum" id="baño">
 <option selected value="0"> Elige una opción </option>
  <option value   ="Solo">Solo</option>
@@ -64,6 +71,7 @@
 
 <p>
 <label for      ="amueblado">¿Amueblado?</label>
+<br>
  <select name   ="enum" id="amueblado">
 <option selected value="0"> Elige una opción </option>
  <option value  ="Si">Si</option>
@@ -73,6 +81,7 @@
 
 <p>
 <label for    ="estacionamiento">Estacionamiento</label>
+<br>
  <select name ="enum" id="estacionamiento">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
@@ -84,6 +93,7 @@
 
 <p>
 <label for="petFriendly">PetFriendly</label>
+<br>
  <select name="enum" id="petFriendly">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
@@ -98,12 +108,10 @@
 
   <input type="submit" value="Encontrar">
 
-
+</div>
 </form>
 
 {{!-- MAPA --}}
-
-<h2>Vecindario</h2>
 
 <div id="map"></div>
 
