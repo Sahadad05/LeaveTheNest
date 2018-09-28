@@ -14,10 +14,15 @@ exports.welcomeMail=(username, email)=>{
     to:email,
     subject:'¡Bienvenido!',
     html:`
-      <h2>¡Bienvenido ${username}! Nos emociona acompañarte en este primer paso de la nueva etapa de tu vida
+      <h2>¡Bienvenido ${username}! 
+      Nos emociona acompañarte en esta nueva etapa de tu vida
       ¿Estás listo? 😃 
       El primer paso es definir en dónde quieres vivir y qué características estás buscando
-      ***Link***
+      Haz click aquí ⬇️
+      https://leave-the-nest.herokuapp.com/buscar
+
+      También tenemos la opción de que anuncies un cuarto o propiedad en renta
+      https://leave-the-nest.herokuapp.com/rentar
       </h2>
     `
   }).then(info=>{

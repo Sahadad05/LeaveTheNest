@@ -59,6 +59,12 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
   res.redirect('/profile')
 })
 
+router.get('/',(req,res)=>{
+ req.logOut()
+  req.app.local.user=null
+  res.redirect('/')
+})
+
 router.get('/profile', isLogged, (req, res) => {
   User.findById(req.app.locals.loggedUser._id)
   .then(usuario => {
@@ -98,26 +104,24 @@ router.post('/edit/:id', isLogged, uploadCloud.single('photoURL'),(req, res, nex
 })
 
 router.get('/buscar', (req, res) => {
-  if (req.user) req.logOut()
-  res.render('buscar')
+  Nidos.find()
+  .then(nidos=>{
+    console.log(nidos)
+    res.render('buscar', {nidos})  
+  })
 })
 
 router.post('/buscar', (req, res, next) => {
   req.app.locals.loggedUser = req.user;
-  res.redirect('/buscar')
+  Nidos.create(req.body)
+  .then(nidos=>{
+  res.redirect('/nidos')
 })
-
+  .catch(e=>console.log(e))
+})
 
 //LISTA DE NIDOS
 
-router.get('/', (req, res, next)=>{
-  Nidos.find()
-  .then(nidos=>{
-    console.log(nidos)
-    res.render('/nidos',{nidos})
-  })
-  .catch(e=>console.log(e))
- })
 
 router.get('/rentar', (req, res) => {
   res.render('rentar')
@@ -141,5 +145,9 @@ router.post('/rentar',(req, res, next) => {
       console.log(e)
     })
 })
+router.get('/datos', (req, res) => {
+  res.render('datos')
+})
+
 
 module.exports = router

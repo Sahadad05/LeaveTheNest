@@ -6,18 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Encuentra a tu Roomie</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+
 </head>
 <body>
 
   <header>
-   <nav id="title">
-     <img width="45px"src="/images/pajaro.png" alt="">
-     <a href="/posts">Leave the nest</a>
+    <img id="pajaro" width="45px"src="/images/pajaro.png" alt="">
+   
+   <nav id="title">  
+     <a href="/">Leave the nest</a>
    </nav>
 
-   <nav>
+   <nav >
      {{#if loggedUser}}
-     <a href="/profile/{{loggedUser.username}}">{{loggedUser.username}}</a>
+     <a href="/profile">{{loggedUser.username}}</a>
      |
      <a href="/">Salir</a>
      {{else}}

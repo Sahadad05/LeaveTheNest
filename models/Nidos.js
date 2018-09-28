@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+
 const nidosSchema = new Schema({
-  // created_by: {type: mongoose.Schema.Types.ObjectId, ref:'Dueno'}, 
   tipo_nido:{
     type:String,
-    enum: ['Casa','Departamaneto','Cuarto'],
-    default:'Casa'
+    enum: ['Casa','Departamento','Cuarto'],
+    default:'Departamento'
   },
   location:{
     type:{
@@ -17,8 +17,7 @@ const nidosSchema = new Schema({
         type:Number
     }]
 
-},//este jala las coordenadas
-  //adress: String,
+},
   precio: Number,
   roomies:Number,
   genero: {

@@ -1,10 +1,15 @@
-<h1>Renta tu nido</h1>
-{{!-- Opciones --}}
+<section>
 
 <form action="/rentar" method="POST" >
 
+<h1>Renta tu nido</h1>
+{{!-- Opciones --}}
+
+<div class="contenedor2">
+
 <p>
  ¿Qué tipo de nido rentas?
+ <br>
  <select name="enum" id="tipo_nido">
 <option selected value="0"> Elige una opción </option>
  <option value="CASA">Casa</option>
@@ -15,6 +20,7 @@
 
 <p>
  ¿Por dónde? (calle, colonia):
+ <br>
  <input type="text" name="location[address]" id="address">
 </p>
 
@@ -24,11 +30,13 @@
 
 <p> 
   ¿Qué precio mensual?
+  <br>
    <input type="Number" name="precio" id="precio">
 </p>
 
 <p>
   <label for="n1">¿Con cuántos roomies?</label>
+  <br>
   <input 
   type    ="number" 
   min     ="0" 
@@ -36,12 +44,13 @@
   step    ="1" 
   id      ="n1" 
   name    ="roomies"
-  pattern ="\d+">
+  pattern ="\d+"></input>
 </p>
 
 
 <p>
 <label for="genero">¿Algún género en especial?</label>
+ <br>
  <select name="enum" id="genero">
 <option selected value="0"> Elige una opción </option>
  <option value="Femenino">Femenino</option>
@@ -53,6 +62,7 @@
 
 <p>
 <label for       ="baño">Baño</label>
+<br>
  <select name="enum" id="baño">
 <option selected value="0"> Elige una opción </option>
  <option value   ="Solo">Solo</option>
@@ -62,7 +72,8 @@
 
 
 <p>
-<label for      ="baño">¿Amueblado?</label>
+<label for      ="amueblado">¿Amueblado?</label>
+<br>
  <select name="enum" id="amueblado">
 <option selected value="0"> Elige una opción </option>
  <option value  ="Si">Si</option>
@@ -71,7 +82,8 @@
 </p>
 
 <p>
-<label for="baño">Estacionamiento</label>
+<label for="estacionamiento">Estacionamiento</label>
+<br>
  <select name="enum" id="estacionamiento">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
@@ -81,7 +93,8 @@
 
 
 <p>
-<label for="baño">PetFriendly</label>
+<label for="petFriendly">PetFriendly</label>
+<br>
  <select name="enum" id="petFriendly">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
@@ -94,12 +107,10 @@
 <br>
 
   <input type="submit" value="Rentar">
+</div>
 
 </form>
-
 {{!-- MAPA --}}
-
-<h2>Vecindario</h2>
 
 <div id="map"></div>
 
@@ -148,5 +159,5 @@ function map(){
   autoCompleteMapita(address, lat, lng)
 
 </script>
-
+</section>
 

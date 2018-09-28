@@ -1,9 +1,8 @@
 <h1>Busca tu nido</h1>
 
-<form{{!-- Opciones --}}
-action="/buscar" method="post" enctype="multipart/form-data">
+<form action="/buscar" method="post">
 
-
+{{!-- Opciones --}}
 <p>
  ¿Qué tipo de nido buscas?
  <select name="enum" id="tipo_nido">
@@ -37,35 +36,35 @@ action="/buscar" method="post" enctype="multipart/form-data">
   step    ="1" 
   id      ="n1" 
   name    ="roomies"
-  pattern ="\d+">
+  pattern ="\d+"></input>
 </p>
 
 
 <p>
-<label for="genero">¿Algún género en especial?</label>
- <select name="enum" id="genero">
+<label for      ="genero">¿Algún género en especial?</label>
+ <select name   ="enum" id="genero">
 <option selected value="0"> Elige una opción </option>
- <option value="Femenino">Femenino</option>
- <option value="Masculino">Masculino</option>
- <option value="Indiferente">Indiferente</option>
+ <option value  ="Femenino">Femenino</option>
+ <option value  ="Masculino">Masculino</option>
+ <option value  ="Indiferente">Indiferente</option>
 </select>
 </p>
 
 
 <p>
 <label for       ="baño">Baño</label>
- <select name="enum" id="baño">
+ <select name    ="enum" id="baño">
 <option selected value="0"> Elige una opción </option>
  <option value   ="Solo">Solo</option>
  <option value   ="Compartido">Compartido</option>
-<option value   ="Indiferente">Indiferente</option>
+ <option value  ="Indiferente">Indiferente</option>
 </select>
 </p>
 
 
 <p>
-<label for      ="baño">¿Amueblado?</label>
- <select name="enum" id="amueblado">
+<label for      ="amueblado">¿Amueblado?</label>
+ <select name   ="enum" id="amueblado">
 <option selected value="0"> Elige una opción </option>
  <option value  ="Si">Si</option>
  <option value  ="No">No</option>
@@ -73,29 +72,31 @@ action="/buscar" method="post" enctype="multipart/form-data">
 </p>
 
 <p>
-<label for="baño">Estacionamiento</label>
- <select name="enum" id="estacionamiento">
+<label for    ="estacionamiento">Estacionamiento</label>
+ <select name ="enum" id="estacionamiento">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
  <option value="No">No</option>
- <option value   ="Indiferente">Indiferente</option>
+ <option value  ="Indiferente">Indiferente</option>
 </select>
 </p>
 
 
 <p>
-<label for="baño">PetFriendly</label>
+<label for="petFriendly">PetFriendly</label>
  <select name="enum" id="petFriendly">
 <option selected value="0"> Elige una opción </option>
  <option value="Si">Si</option>
  <option value="No">No</option>
- <option value   ="Indiferente">Indiferente</option>
+ <option value  ="Indiferente">Indiferente</option>
 </select>
 </p>
 
 
+
 <br>
-  <input type="submit" value="Buscar">
+
+  <input type="submit" value="Encontrar">
 
 
 </form>
@@ -109,45 +110,22 @@ action="/buscar" method="post" enctype="multipart/form-data">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8o46KiOg4PdiJ8WCRXC9KyFfE4d-g0Qw&libraries=places"></script>
 
 <script>
-function map(){
-   const ironhackHQ = {
-   lat:  19.3977857,
-   lng: -99.1713954}
-   const map = new google.maps.Map((
-     document.getElementById('map')
-     ),
-     {
-       zoom: 15,
-       center: ironhackHQ
-       {{!-- center: {lat:lati,lng:longi} --}}
-   })
-   const input = document.getElementById('adress')
-
-
-   const myMarker = new google.maps.Marker({
-     map: map,
-     position:{
-       lat:  19.3977857,
-       lng:  -99.1713954
-     },
-     title: "I'm here",
-     animation:google.maps.Animation.BOUNCE
-   })
-
-   function createMarkers(x,y){
-     let markere = new google.maps.Marker({
-     position: {lat:x, lng:y} ,
-     map: mapa
-   })
- }
-}
-
- map()
-
-
-  let address = document.getElementById('address')
-  let lat = document.getElementById('lat')
-  let lng = document.getElementById('lng')
+  let lati = 19.3977857
+  let lngi = -99.1713954
+  const address = document.getElementById('address')
+  const lat = document.getElementById('lat')
+  const lng = document.getElementById('lng')
+  const map = document.getElementById('map')
+  function initMap(lati,lngi) {
+    mapa = new google.maps.Map(map, {
+    center:{lat:lati,lng:lngi},
+    zoom:17
+    })
+    {{#each nidos}}
+    createMarker({{this.location.coordinates.[1]}},{{this.location.coordinates.[0]}})
+    {{/each}}
+    createMarker(lati,lngi) 
+    }
 
   const autoCompleteMapita = (input, inputLat, inputLng) => {
     let dropdown = new google.maps.places.Autocomplete(input)
@@ -155,10 +133,21 @@ function map(){
       let place = dropdown.getPlace()
       lat.value = place.geometry.location.lat()
       lng.value = place.geometry.location.lng()
+      lati = place.geometry.location.lat()
+      lngi = place.geometry.location.lng()
+      console.log(lat.value, lng.value)
+      initMap(lati,lngi)
     })
   }
-  autoCompleteMapita(address, lat, lng)
 
+  function createMarker(x,y){
+    let marker = new google.maps.Marker({
+      position:{lat:x,lng:y},
+      map:mapa
+    })
+  }
+  initMap(lati,lngi)
+  autoCompleteMapita(address, lat, lng)
 </script>
 
-
+   

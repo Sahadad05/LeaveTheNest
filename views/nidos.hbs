@@ -1,13 +1,51 @@
-<h1>Nidos</h1>
+<section>
 
 
-<div>
- {{#each nidos}}
- <h3>{{tipo_nido}}</h3>
- <p>{{enum}}</p>
- <p>{{adress}}</p>
- {{/each}}
+<article>
+  <h1>Nidos</h1>
+  {{#each nidos}}
+  <div class="contenedor" >
+    <h3>{{this.tipo_nido}}</h3>
+    <p>Ubicación: {{this.location.address}}</p>
+    <p>Renta: ${{this.precio}}</p>
+    <a href="/datos"><button>Contacto</button></a>
+    </div>
+  {{/each}}
+  <a href="/rentar"><button>Agregar nuevo nido</button></a>
+</article>
 
-</div>
 
-<a href="/rentar">Agregar nuevo nido</a>
+
+
+
+
+<div id="map"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8o46KiOg4PdiJ8WCRXC9KyFfE4d-g0Qw&libraries=places"></script>
+
+<script>
+  let lati = 19.3977857
+  let lngi = -99.1713954
+  const map = document.getElementById('map')
+  function initMap(lati,lngi) {
+    mapa = new google.maps.Map(map, {
+    center:{lat:lati,lng:lngi},
+    zoom:17
+    })
+    {{#each nidos}}
+    createMarker({{this.location.coordinates.[1]}},{{this.location.coordinates.[0]}})
+    {{/each}}
+    }
+
+  function createMarker(x,y){
+    let marker = new google.maps.Marker({
+      position:{lat:x,lng:y},
+      map:mapa
+    })
+  }
+  initMap(lati,lngi)
+</script>
+</section>
+
+
+   

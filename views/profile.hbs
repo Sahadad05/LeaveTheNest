@@ -3,11 +3,18 @@
   |
   <a href='/rentar'><button>Rentar nido</button></a>
   |
+  <a href="/edit/{{_id}}"><button>Editar perfil</button></a>
+  |
   <a href='/'><button>Salir de sesión</button></a>
 </div>
 
+<div>
 <h2>¡Hola {{username}}!</h2>
-<img src="{{photoURL}}" alt="profile_picture" id="photo">
+<img 
+src   ="{{photoURL}}" 
+alt   ="profile_picture" 
+id    ="photo" 
+width ="200px">
 
 <div>
 <h3>Edad</h3>
@@ -21,13 +28,13 @@
 
 <br>
 
-<div>
-  <a href="/edit/{{_id}}"><button>Editar perfil</button></a>
-</div>
+
 
 <hr>
 
 <div>
   <h2>Descripción</h2>
   <p>{{descripcion}}</p>
+</div>
+
 </div>
