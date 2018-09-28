@@ -106,7 +106,7 @@ router.post('/edit/:id', isLogged, uploadCloud.single('photoURL'),(req, res, nex
 router.get('/buscar', (req, res) => {
   Nidos.find()
   .then(nidos=>{
-    console.log(nidos)
+    console.log(nidops)
     res.render('buscar', {nidos})  
   })
 })

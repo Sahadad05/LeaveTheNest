@@ -41,6 +41,7 @@ header{
  header nav a{
   color: rgb(111, 6, 138);
   text-decoration: none;
+  font-size: 120%;  
  }
  header nav a:hover{
   color: #000;
@@ -66,9 +67,8 @@ section{
 .contenedor{
   padding: 10px;
   margin: 20px 0;
-  border-radius: 15px;
-  background-color: white;
-  
+  border-radius: 15prgba(255, 255, 255, 0.879);
+  background-color: rgba(255, 255, 255, 0.81);
   width: 300px;
   height: 200px;
 }
@@ -83,6 +83,17 @@ section{
   height: 550px;
 }
 
+.contenedor3{
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:15px;
+  border-radius: 15px;
+  background-color:rgba(248, 251, 252, 0.726) ;
+  width: 350px;
+  height: 600px;
+  text-align: center;
+}
 .estampa{
   border-radius: 35px;
   background-color:rgba(0, 0, 0, 0.112);
@@ -96,3 +107,37 @@ p{
   font-size: 130%;
   margin: 3px;
 }
+
+.paquito{
+  width: 220px;
+  height: 220px;
+  border-radius: 200px;
+}
+.contenedor4{
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:15px;
+  border-radius: 15px;
+  background-color:rgba(248, 251, 252, 0.726) ;
+  width: 650px;
+  height: 600px;
+  text-align: center;
+  
+}
+.contacto{
+  
+}
+
+.contenedor5{
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:15px;
+    background-color:rgba(248, 251, 252, 0.726) ;
+  width: 350px;
+  height: 600px;
+  text-align: center;  
+}
+
+
